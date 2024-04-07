@@ -1,10 +1,9 @@
-name: Build and Deploy to Docker Hub
+name: Build and push to ecr
 
 on:
   push:
     branches:
-      - main
-      - test
+      - demo
 
 jobs:
   build-and-push:
