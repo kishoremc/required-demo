@@ -1,15 +1,15 @@
 name: Build on PR
 on:
-  pull_request:
+  pull_request:        # we are telling that if any time some one rises a pull request, please perform the below steps.
     branches:
       - master              # this can m=be made main as per your requirement
       - main
 jobs:
   build:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-latest       # all of their code will reach this ubuntu machine
     steps:
-      - uses: actions/checkout@v3
-      - name: Use Node.js
+      - uses: actions/checkout@v3       # this is the branch of the person who is trying to create a pull request
+      - name: Use Node.js               # It installs nodejs on ubuntu latest machine
         uses: actions/setup-node@v3
         with:
           node-version: '20'
