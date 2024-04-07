@@ -13,24 +13,25 @@ jobs:
     - name: Check Out Repo
       uses: actions/checkout@v2
 
-    - name: Login to Amazon ECR
-      run: aws ecr get-login-password --region ap-south-1 | docker login --username AWS --password-stdin ${{ secrets.AWS_ACCOUNT_ID }}.dkr.ecr.us-west-2.amazonaws.com
-
-    - name: Build Docker image
-      run: docker build -t docker-cd .
-
-    - name: Tag Docker image # test
-      run: docker tag docker-cd:latest ${{ secrets.AWS_ACCOUNT_ID }}.dkr.ecr.us-west-2.amazonaws.com/docker-cd:latest
-
-    - name: Push Docker image to ECR
-      run: docker push ${{ secrets.AWS_ACCOUNT_ID }}.dkr.ecr.us-west-2.amazonaws.com/docker-cd:latest
-
     - name: Configure AWS credentials
       uses: aws-actions/configure-aws-credentials@v1
       with:
         aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
         aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-        aws-region: ap-south-1 
+        aws-region: ap-south-1
+
+    - name: Login to Amazon ECR
+      run: aws ecr get-login-password --region ap-south-1 | docker login --username AWS --password-stdin ${{ secrets.AWS_ACCOUNT_ID }}.dkr.ecr.ap-south-1.amazonaws.com
+
+    - name: Build Docker image
+      run: docker build -t docker-cd .
+
+    - name: Tag Docker image # test
+      run: docker tag docker-cd:latest ${{ secrets.AWS_ACCOUNT_ID }}.dkr.ecr.ap-south-1.amazonaws.com/docker-cd:latest
+
+    - name: Push Docker image to ECR
+      run: docker push ${{ secrets.AWS_ACCOUNT_ID }}.dkr.ecr.ap-south-1.amazonaws.com/docker-cd:latest
+
 
 
 
