@@ -23,7 +23,7 @@ jobs:
       uses: docker/build-push-action@v2
       with:
         context: .
-        file: ./Docker/Dockerfile.user
+        file: ./docker/Dockerfile.user
         push: true
         tags: kishoremc/docker-cd:latest  # Replace with your Docker Hub username and repository
 
