@@ -24,7 +24,7 @@ jobs:
       run: aws ecr get-login-password --region ap-south-1 | docker login --username AWS --password-stdin ${{ secrets.AWS_ACCOUNT_ID }}.dkr.ecr.ap-south-1.amazonaws.com
 
     - name: Build Docker image
-      run: docker build -t docker-cd -f ./docker/Dockerfile .
+      run: docker build -t docker-cd -f ./docker/Dockerfile.user .
 
     - name: Tag Docker image # test
       run: docker tag docker-cd:latest ${{ secrets.AWS_ACCOUNT_ID }}.dkr.ecr.ap-south-1.amazonaws.com/docker-cd:latest
