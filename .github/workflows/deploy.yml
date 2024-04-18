@@ -1,7 +1,7 @@
 name: Build and Deploy to Docker Hub
 
 on:
-  pull_request:
+  push:
     branches:
       - "**"
 
