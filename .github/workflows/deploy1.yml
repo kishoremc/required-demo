@@ -44,8 +44,3 @@ jobs:
           sudo docker stop docker-cd || true
           sudo docker rm docker-cd || true
           sudo docker run -d --name docker-cd -p 3005:3000 ${{ secrets.AWS_ACCOUNT_ID }}.dkr.ecr.ap-south-1.amazonaws.com/docker-cd:latest
-
-
-
-
-
