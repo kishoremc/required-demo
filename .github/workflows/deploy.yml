@@ -1,7 +1,7 @@
 name: Build and Deploy to Docker Hub
 
 on:
-  push:
+  pull_request:
     branches:
       - "**"
 
@@ -24,6 +24,6 @@ jobs:
         context: .
         file: ./docker/Dockerfile.user
         push: true
-        tags: kishoremc/docker-cd:latest1  # Replace with your Docker Hub username and repository
+        tags: kishoremc/docker-cd:latest2  # Replace with your Docker Hub username and repository
 
 
